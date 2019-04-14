@@ -1,6 +1,6 @@
 from django.shortcuts import render
-from blog.models import Post
-from . import CommentForm
+from blog.models import Post, Comment
+from blog.forms import CommentForm
 
 
 def blog_index(request):
@@ -11,7 +11,7 @@ def blog_index(request):
     return render(request, 'blog_index.html', context)
 
 
-def blog_categoty(request, category):
+def blog_category(request, category):
     posts = Post.objects.filter(
         categories__name__contains=category
     ).order_by(
